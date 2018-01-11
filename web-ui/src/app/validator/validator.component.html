@@ -1,0 +1,35 @@
+<div class="row" *ngIf="adForm; else loading">
+  <div class="col-xs-12 col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-2">
+    <form (ngSubmit)="onSubmit()" [formGroup]="adForm">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="desc">
+              Please enter your test data:
+            </label>
+            <textarea id="desc"
+                      formControlName="description"
+                      class="form-control"
+                      rows="6">
+
+            </textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <button type="submit"
+                  class="btn btn-success"
+                  [disabled]="!adForm.valid">Verify</button>
+          <button type="button"
+                  class="btn btn-danger"
+                  (click)="onCancel()">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<ng-template #loading>
+  <h4>Loading...</h4>
+</ng-template>
+
