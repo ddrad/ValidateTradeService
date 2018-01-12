@@ -1,6 +1,9 @@
 package com.azaroff.projects.craftsman.webapp.model;
 
+import org.joda.time.DateTime;
+
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 /**
  * Copyright DonRiver Inc. All Rights Reserved.
@@ -31,6 +34,9 @@ public class Customer {
     private String premiumType;
     private String premiumDate;
     private String legalEntity;
+
+    private LocalDate valueDateDate;
+    private LocalDate tradeDateDate;
 
     public String getCustomer() {
         return customer;
@@ -198,5 +204,21 @@ public class Customer {
 
     public void setLegalEntity(String legalEntity) {
         this.legalEntity = legalEntity;
+    }
+
+    public LocalDate getValueDateDate() {
+        return valueDateDate;
+    }
+
+    public void setValueDateDate(LocalDate valueDateDate) {
+        this.valueDateDate = valueDateDate;
+    }
+
+    public LocalDate getTradeDateDate() {
+        return tradeDateDate;
+    }
+
+    public void setTradeDateDate(LocalDate tradeDateDate) {
+        this.tradeDateDate = tradeDateDate;
     }
 }
