@@ -5,8 +5,8 @@ import { AppCommonModule } from '../common/app-common.module';
 import { AppRoutingModule } from '../app-routing.module';
 import { AuthService } from '../auth/auth.service';
 import { HttpService } from '../common/services/http.service';
-import {AdService} from '../ads/ad.service';
-import {ValidatorService} from "../validator/validator.service";
+import { ValidatorService} from "../validator/validator.service";
+import { StorageService } from '../common/services/storage.service';
 
 @NgModule({
   declarations: [
@@ -23,8 +23,9 @@ import {ValidatorService} from "../validator/validator.service";
   ],
   providers: [
     ValidatorService,
+    StorageService,
     AuthService,
-    HttpService
+    HttpService,
   ]
 })
 export class CoreModule {

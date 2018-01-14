@@ -1,23 +1,20 @@
 package com.azaroff.projects.craftsman.webapp.utils.validate;
 
 import com.azaroff.projects.craftsman.webapp.utils.validate.constant.SupportedCustomer;
+import com.azaroff.projects.craftsman.webapp.utils.validate.constant.SupportedProduct;
 import org.springframework.stereotype.Component;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.EnumSet;
-import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Component
-public class ValidateSupportedCustomer {
+public class ValidateByProduct {
 
-    public boolean isSupportedCustomer(String customerName){
+    public boolean isSpotOrForward(String productName) {
         return Stream.of(SupportedCustomer.values())
                 .map(Enum::name)
-                .filter(v-> v.equals(customerName))
+                .filter(v -> !productName.equals(SupportedProduct.VanillaOption.name()))
+                .filter(v -> v.equals(productName))
                 .collect(Collectors.toList()).size() > 0 ? true : false;
     }
-
 }

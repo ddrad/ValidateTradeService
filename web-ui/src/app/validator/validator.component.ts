@@ -2,7 +2,10 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
-import {ValidatorService} from "./validator.service";
+import { ValidatorService } from "./validator.service";
+import { StorageService } from '../common/services/storage.service';
+import { Trade } from '../common/model/trade.model';
+import { Reply } from '../common/model/reply.model';
 
 @Component({
   selector: 'app-validator',
@@ -15,8 +18,9 @@ export class ValidatorComponent implements OnInit, OnDestroy {
   subscription: Subscription;
 
   constructor(private route: ActivatedRoute,
-              private validatorService: ValidatorService,
-              private router: Router) {
+    private validatorService: ValidatorService,
+    private storageService: StorageService,
+    private router: Router) {
   }
 
   ngOnInit() {
@@ -24,16 +28,13 @@ export class ValidatorComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-     console.log('Form Submited');
-      this.validatorService.validate(this.adForm.value)
-        .subscribe(
-          (ad: any) => {
-            // this.adService.adsInfo[ad.index] = ad;
-            // this.adsChangedSbj.next(this.adsInfo.slice());
-            // this.adSelectedSbj.next(ad);
-            this.router.navigate(['/ads', ad.id, ad.index], {relativeTo: this.route});
-          }
-        );
+    this.validatorService.validate(this.adForm.value)
+      .subscribe(
+      (replies: Reply[]) => {
+        this.storageService.setFailedTrades(replies);
+        this.router.navigate(['/result'], { relativeTo: this.route });
+      }
+      );
 
 
     this.onCancel();
@@ -55,6 +56,6 @@ export class ValidatorComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-   // this.subscription.unsubscribe();
+    // this.subscription.unsubscribe();
   }
 }

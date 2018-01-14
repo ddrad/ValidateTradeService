@@ -37,6 +37,10 @@ public class Customer {
 
     private LocalDate valueDateDate;
     private LocalDate tradeDateDate;
+    private LocalDate expiryDateDate;
+    private LocalDate excerciseStartDateDate;
+    private LocalDate premiumDateDate;
+    private LocalDate deliveryDateDate;
 
     public String getCustomer() {
         return customer;
@@ -220,5 +224,37 @@ public class Customer {
 
     public void setTradeDateDate(LocalDate tradeDateDate) {
         this.tradeDateDate = tradeDateDate;
+    }
+
+    public LocalDate getExpiryDateDate() {
+        return expiryDateDate;
+    }
+
+    public void setExpiryDateDate(LocalDate expiryDateDate) {
+        this.expiryDateDate = expiryDateDate;
+    }
+
+    public LocalDate getExcerciseStartDateDate() {
+        return excerciseStartDateDate;
+    }
+
+    public void setExcerciseStartDateDate(LocalDate excerciseStartDateDate) {
+        this.excerciseStartDateDate = excerciseStartDateDate;
+    }
+
+    public LocalDate getPremiumDateDate() {
+        return premiumDateDate;
+    }
+
+    public void setPremiumDateDate(LocalDate premiumDateDate) {
+        this.premiumDateDate = premiumDateDate;
+    }
+
+    public LocalDate getDeliveryDateDate() {
+        return deliveryDateDate;
+    }
+
+    public void setDeliveryDateDate(LocalDate deliveryDateDate) {
+        this.deliveryDateDate = deliveryDateDate;
     }
 }

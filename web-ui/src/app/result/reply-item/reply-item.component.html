@@ -1,0 +1,12 @@
+<a style="cursor: pointer">
+  <div class="pull-left">
+    <h4 class="text-danger">{{reply.name}}</h4>
+
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let i of reply.trades; let i = index">
+        {{ disply(i) }}
+      </li>
+    </ul>
+
+  </div>
+</a>

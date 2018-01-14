@@ -1,0 +1,14 @@
+<div class="row" *ngIf="isHasIssues()">
+    <div class="col-xs-12">
+     <app-reply-item 
+     *ngFor="let item of replies"
+     [reply]="item">
+       </app-reply-item>
+    </div>
+</div>
+
+<div class="row" *ngIf="!isHasIssues()">
+    <div class="col-xs-12">
+      <h2 class="text-success">This data was validated successfully.</h2>
+    </div>
+  </div>
