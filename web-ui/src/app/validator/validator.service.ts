@@ -42,7 +42,8 @@ export class ValidatorService {
       })
       .catch(
       (error: Response) => {
-        return Observable.throw('Can not update ad ' + error);
+        let err = error.json();
+        return Observable.throw(err.error+' '+err.message);
       }
       );
   }

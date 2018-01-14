@@ -5,6 +5,8 @@ import { Reply } from "../model/reply.model";
 export class StorageService {
 
     replies: Reply[]=[];
+    serverErrorMessage: string = null;
+
 
     setFailedTrades(replies: Reply[]) {
         this.replies = replies;
@@ -12,6 +14,14 @@ export class StorageService {
 
     getFailedTrades() {
         return this.replies.slice();
+    }
+
+    setErrorMessage(errMsg: string) {
+        this.serverErrorMessage = errMsg;
+    }
+
+    getErrorMessage(){
+        return this.serverErrorMessage;
     }
 
 }

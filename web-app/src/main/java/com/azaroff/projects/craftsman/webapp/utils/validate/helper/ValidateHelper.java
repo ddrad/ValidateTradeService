@@ -66,7 +66,7 @@ public class ValidateHelper {
                 .collect(Collectors.toMap(m -> m.getKey() + " - Not Value Date for Spot or Forward",
                         m -> m.getValue().stream()
                                 .filter(c -> {
-                                    return !isValidateString(c.getType(),
+                                    return isValidateString(c.getType(),
                                             n -> vp.isSpotOrForward((String) n));
                                 })
                                 .filter(c -> c.getValueDate() == null)

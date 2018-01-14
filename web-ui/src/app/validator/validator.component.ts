@@ -16,7 +16,7 @@ export class ValidatorComponent implements OnInit, OnDestroy {
 
   adForm: FormGroup;
   subscription: Subscription;
-
+  
   constructor(private route: ActivatedRoute,
     private validatorService: ValidatorService,
     private storageService: StorageService,
@@ -28,10 +28,15 @@ export class ValidatorComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
+    this.storageService.setErrorMessage(null);
     this.validatorService.validate(this.adForm.value)
       .subscribe(
       (replies: Reply[]) => {
         this.storageService.setFailedTrades(replies);
+        this.router.navigate(['/result'], { relativeTo: this.route });
+      },
+      err => {
+        this.storageService.setErrorMessage(err);
         this.router.navigate(['/result'], { relativeTo: this.route });
       }
       );

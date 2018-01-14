@@ -13,8 +13,9 @@ public class ValidateByProduct {
     public boolean isSpotOrForward(String productName) {
         return Stream.of(SupportedCustomer.values())
                 .map(Enum::name)
-                .filter(v -> !productName.equals(SupportedProduct.VanillaOption.name()))
-                .filter(v -> v.equals(productName))
+                .filter(v -> productName.equals(SupportedProduct.Spot.name())
+                        || productName.equals(SupportedProduct.Forward.name()))
+               // .filter(v -> v.equals(productName))
                 .collect(Collectors.toList()).size() > 0 ? true : false;
     }
 }

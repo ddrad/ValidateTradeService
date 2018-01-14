@@ -1,4 +1,12 @@
-<div class="row" *ngIf="isHasIssues()">
+
+<div class="row" *ngIf="isServerError()">
+    <div class="col-xs-12">
+        <h2 class="text-danger">Internal Server Error</h2>
+        <p> {{serverErrorMessage}}</p>
+      </div>  
+</div>
+
+<div class="row" *ngIf="isHasIssues() && !isServerError()">
     <div class="col-xs-12">
      <app-reply-item 
      *ngFor="let item of replies"
@@ -7,7 +15,7 @@
     </div>
 </div>
 
-<div class="row" *ngIf="!isHasIssues()">
+<div class="row" *ngIf="!isHasIssues() && !isServerError()">
     <div class="col-xs-12">
       <h2 class="text-success">This data was validated successfully.</h2>
     </div>

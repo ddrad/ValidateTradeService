@@ -14,6 +14,7 @@ import { Reply } from "../common/model/reply.model";
     }
   
     replies:Reply[];
+    serverErrorMessage: string;
 
     ngOnInit() {
       this.replies = this.storageService.getFailedTrades();
@@ -21,6 +22,14 @@ import { Reply } from "../common/model/reply.model";
 
     isHasIssues() {
       return this.replies.length > 0;
+    }
+
+    isServerError(){
+      this.serverErrorMessage = this.storageService.getErrorMessage();
+      if(this.serverErrorMessage != null && this.serverErrorMessage.length > 0){
+        return true;
+      }
+      return false;
     }
 
     
