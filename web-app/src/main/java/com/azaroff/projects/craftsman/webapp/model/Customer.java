@@ -4,10 +4,9 @@ import org.joda.time.DateTime;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Objects;
 
 /**
- * Copyright DonRiver Inc. All Rights Reserved.
- * <p>
  * Author: Dmitry Azarov
  * Created: 11.01.2018.
  */
@@ -256,5 +255,80 @@ public class Customer {
 
     public void setDeliveryDateDate(LocalDate deliveryDateDate) {
         this.deliveryDateDate = deliveryDateDate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Customer customer1 = (Customer) o;
+        return Double.compare(customer1.rate, rate) == 0 &&
+                Double.compare(customer1.premium, premium) == 0 &&
+                Objects.equals(customer, customer1.customer) &&
+                Objects.equals(ccyPair, customer1.ccyPair) &&
+                Objects.equals(type, customer1.type) &&
+                Objects.equals(style, customer1.style) &&
+                Objects.equals(direction, customer1.direction) &&
+                Objects.equals(strategy, customer1.strategy) &&
+                Objects.equals(tradeDate, customer1.tradeDate) &&
+                Objects.equals(amount1, customer1.amount1) &&
+                Objects.equals(amount2, customer1.amount2) &&
+                Objects.equals(valueDate, customer1.valueDate) &&
+                Objects.equals(deliveryDate, customer1.deliveryDate) &&
+                Objects.equals(expiryDate, customer1.expiryDate) &&
+                Objects.equals(trader, customer1.trader) &&
+                Objects.equals(payCcy, customer1.payCcy) &&
+                Objects.equals(excerciseStartDate, customer1.excerciseStartDate) &&
+                Objects.equals(premiumCcy, customer1.premiumCcy) &&
+                Objects.equals(premiumType, customer1.premiumType) &&
+                Objects.equals(premiumDate, customer1.premiumDate) &&
+                Objects.equals(legalEntity, customer1.legalEntity) &&
+                Objects.equals(valueDateDate, customer1.valueDateDate) &&
+                Objects.equals(tradeDateDate, customer1.tradeDateDate) &&
+                Objects.equals(expiryDateDate, customer1.expiryDateDate) &&
+                Objects.equals(excerciseStartDateDate, customer1.excerciseStartDateDate) &&
+                Objects.equals(premiumDateDate, customer1.premiumDateDate) &&
+                Objects.equals(deliveryDateDate, customer1.deliveryDateDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customer, ccyPair, type, style, direction, strategy, tradeDate, amount1, amount2, rate,
+                valueDate, deliveryDate, expiryDate, trader, payCcy, excerciseStartDate, premium, premiumCcy,
+                premiumType, premiumDate, legalEntity, valueDateDate, tradeDateDate, expiryDateDate,
+                excerciseStartDateDate, premiumDateDate, deliveryDateDate);
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "customer='" + customer + '\'' +
+                ", ccyPair='" + ccyPair + '\'' +
+                ", type='" + type + '\'' +
+                ", style='" + style + '\'' +
+                ", direction='" + direction + '\'' +
+                ", strategy='" + strategy + '\'' +
+                ", tradeDate='" + tradeDate + '\'' +
+                ", amount1=" + amount1 +
+                ", amount2=" + amount2 +
+                ", rate=" + rate +
+                ", valueDate='" + valueDate + '\'' +
+                ", deliveryDate='" + deliveryDate + '\'' +
+                ", expiryDate='" + expiryDate + '\'' +
+                ", trader='" + trader + '\'' +
+                ", payCcy='" + payCcy + '\'' +
+                ", excerciseStartDate='" + excerciseStartDate + '\'' +
+                ", premium=" + premium +
+                ", premiumCcy='" + premiumCcy + '\'' +
+                ", premiumType='" + premiumType + '\'' +
+                ", premiumDate='" + premiumDate + '\'' +
+                ", legalEntity='" + legalEntity + '\'' +
+                ", valueDateDate=" + valueDateDate +
+                ", tradeDateDate=" + tradeDateDate +
+                ", expiryDateDate=" + expiryDateDate +
+                ", excerciseStartDateDate=" + excerciseStartDateDate +
+                ", premiumDateDate=" + premiumDateDate +
+                ", deliveryDateDate=" + deliveryDateDate +
+                '}';
     }
 }
